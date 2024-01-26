@@ -69,7 +69,11 @@ Domain *
 
 # Defines the name of the selector to be used when signing messages.
 <% if $alldomain { -%>
+  <% if $selector { -%>
 Selector                <%= $selector %>
+  <% } else { -%>
+#Selector                default
+  <% } -%>
 <% } else { -%>
 #Selector                default
 <% } -%>
@@ -85,7 +89,11 @@ KeyFile                 <%= $configdir %>/keys/<%= $selector %>
 # this tells OpenDKIM where to find your keys. If present, overrides any KeyFile
 # setting in the configuration file.
 <% if $alldomain { -%>
+  <%- if $keytable { -%>
+KeyTable                <%= $keytable %>
+  <%- } else { -%>
 #KeyTable                /etc/opendkim/KeyTable
+  <% } -%>
 <% } else { -%>
   <%- if $keytable { -%>
 KeyTable                <%= $keytable %>
@@ -98,7 +106,11 @@ KeyTable                refile:<%= $configdir %>/KeyTable
 # on the address found in the From: header field. In simple terms, this tells
 # OpenDKIM how to use your keys.
 <% if $alldomain { -%>
+  <%- if $signingtable { -%>
+SigningTable            <%= $signingtable %>
+  <% } else { -%>
 #SigningTable            refile:/etc/opendkim/SigningTable
+  <% } -%>
 <% } else { -%>
   <%- if $signingtable { -%>
 SigningTable            <%= $signingtable %>
