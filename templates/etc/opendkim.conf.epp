@@ -17,6 +17,8 @@
       Optional[Array[String,1]] $senderheaders,
       Optional[String[1]] $signaturealgorithm,
       Optional[Integer[1]] $minimumkeybits,
+      Optional[String[1]] $signingtable,
+      Optional[String[1]] $keytable,
       Hash[String,Variant[Array[String],String,Integer,Boolean]] $additional_options
 | -%>
 # THIS FILE IS MANAGED BY PUPPET
