@@ -139,6 +139,8 @@ class opendkim (
   Optional[String[1]]             $publickeyextended    = undef,
   Optional[String[1]]             $privatekey           = undef,
   Optional[String[1]]             $hash_algorithms      = undef,
+  Optional[String]                $signingtable,
+  Optional[String]                $keytable,
 ) {
   contain opendkim::install
   contain opendkim::user

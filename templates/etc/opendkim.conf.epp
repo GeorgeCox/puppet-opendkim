@@ -85,7 +85,11 @@ KeyFile                 <%= $configdir %>/keys/<%= $selector %>
 <% if $alldomain { -%>
 #KeyTable                /etc/opendkim/KeyTable
 <% } else { -%>
+  <%- if $keytable { -%>
+KeyTable                <%= $keytable %>
+  <%- } else { -%>
 KeyTable                refile:<%= $configdir %>/KeyTable
+  <% } -%>
 <% } -%>
 
 # Defines a table used to select one or more signatures to apply to a message based
@@ -94,7 +98,11 @@ KeyTable                refile:<%= $configdir %>/KeyTable
 <% if $alldomain { -%>
 #SigningTable            refile:/etc/opendkim/SigningTable
 <% } else { -%>
+  <%- if $signingtable { -%>
+SigningTable            <%= $signingtable %>
+  <%- } else { -%>
 SigningTable            refile:<%= $configdir %>/SigningTable
+  <% } -%>
 <% } -%>
 
 # Identifies a set of "external" hosts that may send mail through the server as one
